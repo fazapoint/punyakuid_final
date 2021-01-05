@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Punyakuid | Admin</title>
+
+    <link rel="icon" href="../assets/img/iconn1.png">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -31,11 +33,23 @@
                 </li>
             </ul>
 
+            <?php
+            session_start();
 
+            // cek apakah yang mengakses halaman ini sudah login
+            if ($_SESSION['level'] != "admin") {
+                header("location:../login.php?pesan=bukan_admin");
+            }
+
+            if ($_SESSION['status'] != "login") {
+                header("location:../login.php?pesan=belum_login");
+            }
+
+            ?>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Logout</a>
+                    <a href="../logout.php" class="nav-link">Logout</a>
                 </li>
             </ul>
         </nav>

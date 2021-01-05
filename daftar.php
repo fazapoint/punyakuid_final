@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>SB Admin 2 - Daftar</title>
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,19 +35,36 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Buat Akun Baru!</h1>
                                     </div>
-                                    <form class="user">
+                                    <?php
+                                    if (isset($_GET['pesan'])) {
+                                        if ($_GET['pesan'] == "username") {
+                                            echo "<div class='alert alert-danger'>Username sudah terdaftar</div>";
+                                        } else if ($_GET['pesan'] == "email") {
+                                            echo "<div class='alert alert-danger'>Email sudah terdaftar</div>";
+                                        } else if ($_GET['pesan'] == "password") {
+                                            echo "<div class='alert alert-danger'>Password tidak sesuai</div>";
+                                        } else if ($_GET['pesan'] == "usernameemail") {
+                                            echo "<div class='alert alert-danger'>username dan email sudah terdaftar</div>";
+                                        }
+                                    }
+
+                                    ?>
+                                    <form class="user" method="POST" action="cek_daftar.php">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Masukkan nama anda">
+                                            <input type="text" name="nama" class="form-control form-control-user" id="exampleFirstName" placeholder="Masukkan nama anda">
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Masukkan email anda">
+                                            <input type="text" name="username" class="form-control form-control-user" id="exampleFirstName" placeholder="Masukkan username baru">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Masukkan email anda">
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                                <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Ulangi password">
+                                                <input type="password" name="repassword" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Ulangi password">
                                             </div>
                                         </div>
                                         <input type="submit" name="daftar" value="Daftar" class="btn btn-primary btn-user btn-block">
@@ -57,7 +74,7 @@
                                         <small>Sudah punya akun?</small>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.html">Masuk!</a>
+                                        <a class="small" href="login.php">Masuk!</a>
                                     </div>
                                 </div>
                             </div>

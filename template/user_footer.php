@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-grey">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>Copyright &copy;2020 Punyakuid</span>
@@ -29,7 +29,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-danger" href="../logout.php">Logout</a>
             </div>
         </div>
     </div>
@@ -47,6 +47,12 @@
 
 <!-- Page level plugins -->
 <script src="../assets/vendor/sbadmin/vendor/chart.js/Chart.min.js"></script>
+
+
+
+
+
+
 
 
 

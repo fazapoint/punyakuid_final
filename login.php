@@ -39,12 +39,31 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                                     </div>
-                                    <form class="user">
+                                    <div>
+                                        <?php
+                                        if (isset($_GET['pesan'])) {
+                                            if ($_GET['pesan'] == "gagal") {
+                                                echo "<div class='alert alert-danger'>Username atau Password tidak sesuai !</div>";
+                                            } else if ($_GET['pesan'] == "belum_login") {
+                                                echo "<div class='alert alert-danger'>Anda belum login</div>";
+                                            } else if ($_GET['pesan'] == "bukan_user") {
+                                                echo "<div class='alert alert-danger'>Anda bukan user</div>";
+                                            } else if ($_GET['pesan'] == "bukan_admin") {
+                                                echo "<div class='alert alert-danger'>Anda bukan admin</div>";
+                                            } else if ($_GET['pesan'] == "logout") {
+                                                echo "<div class='alert alert-primary'>Anda berhasil logout</div>";
+                                            } else if ($_GET['pesan'] == "daftar_sukses") {
+                                                echo "<div class='alert alert-success'>Daftar sukses silahkan login</div>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <form class="user" action="cek_login.php" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username atau email">
+                                            <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username atau email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <input type="submit" name="login" value="Masuk" class="btn btn-primary btn-user btn-block">
                                         <hr>
@@ -53,7 +72,7 @@
                                         <small>belum punya akun ?</small>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Buat akun baru!</a>
+                                        <a class="small" href="daftar.php">Buat akun baru!</a>
                                     </div>
                                 </div>
                             </div>

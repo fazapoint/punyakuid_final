@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
-
+    <title>Punyakuid | user</title>
+    <link rel="icon" href="../assets/img/iconn1.png">
     <!-- Custom fonts for this template-->
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -22,6 +22,45 @@
 
 <body id="page-top">
 
+    <?php
+
+    //ini fungsi untuk select menu yang active agar dinamis
+    function menu_active($menu)
+    {
+        $url = explode('/', $_SERVER['REQUEST_URI']);
+        if ($url[3] == $menu) {
+            echo "active";
+        }
+    }
+
+    //ini fungsi untuk open menu yang active agar dinamis
+    function menu_show($menu1)
+    {
+        $url = explode('/', $_SERVER['REQUEST_URI']);
+        if ($url[3] == $menu1) {
+            echo "show";
+        }
+    }
+
+
+    session_start();
+
+    // cek apakah yang mengakses halaman ini sudah login
+    if ($_SESSION['level'] != "user") {
+        header("location:../login.php?pesan=bukan_user");
+    }
+
+    if ($_SESSION['status'] != "login") {
+        header("location:../login.php?pesan=belum_login");
+    }
+
+    require '../koneksi.php';
+    $id_user = $_SESSION['id_user'];
+    $d = mysqli_fetch_array(mysqli_query($koneksi, "select * from user where id_user = '$id_user'"));
+
+
+    ?>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -30,18 +69,16 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+
+                <div class="sidebar-brand-text mx-3">PunyakuID</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item <?php menu_active("dashboard.php"); ?>">
+                <a class="nav-link" href="../user/dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -56,18 +93,18 @@
                 Profil
             </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item <?php menu_active("usr_profil.php"); ?>">
+                <a class="nav-link" href="../user/usr_profil.php">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Profil Saya</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item <?php menu_active("usr_edit_profil.php"); ?>">
+                <a class="nav-link" href="../user/usr_edit_profil.php">
                     <i class="fas fa-fw fa-user-edit"></i>
                     <span>Edit Profil</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item <?php menu_active("usr_edit_pass.php"); ?>">
+                <a class="nav-link" href="../user/usr_edit_pass.php">
                     <i class="fas fa-fw fa-key"></i>
                     <span>Ganti Password</span></a>
             </li>
@@ -81,33 +118,37 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item <?php menu_active("usr_barang_hilang.php"); ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDaftar" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-bars"></i>
                     <span>Daftar Postingan</span>
                 </a>
-                <div id="collapseDaftar" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseDaftar" class="collapse <?php menu_show("usr_barang_hilang.php"); ?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="login.html">Daftar Barang Hilang</a>
+                        <a class="collapse-item active" href="../user/usr_barang_hilang.php">Daftar Barang Hilang</a>
                     </div>
             </li>
-
-            <li class="nav-item">
+            <li class="nav-item <?php menu_active("usr_tambah_barang_hilang.php"); ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBuat" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-plus-circle"></i>
                     <span>Buat Postingan</span>
                 </a>
-                <div id="collapseBuat" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseBuat" class="collapse <?php menu_show("usr_tambah_barang_hilang.php"); ?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="login.html">Buat Barang Hilang</a>
+                        <a class="collapse-item <?php menu_active("usr_tambah_barang_hilang.php"); ?>" href="../user/usr_tambah_barang_hilang.php">Buat Barang Hilang</a>
                     </div>
             </li>
-
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item <?php menu_active("usr_pesan.php"); ?>">
+                <a class="nav-link" href="../user/usr_pesan.php">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Kirim pesan ke admin</span></a>
+            </li>
+
+            <li class="nav-item <?php menu_active("usr_riwayat.php"); ?>">
+                <a class="nav-link" href="../user/usr_riwayat.php">
+                    <i class="fas fa-fw  fa-history"></i>
+                    <span>Riwayat</span></a>
             </li>
 
 
@@ -137,16 +178,13 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-
-
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="../assets/vendor/sbadmin/img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']; ?></span>
+                                <img class="img-profile rounded-circle" src="../assets/img/user/<?php echo $d['gambar_user']; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
