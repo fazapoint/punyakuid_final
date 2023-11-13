@@ -30,7 +30,7 @@ $id_user = $_SESSION['id_user'];
                             <th>Lokasi Hilang</th>
                             <th>Penyebab</th>
                             <th>Status</th>
-                            <th style="width: 10%">Opsi</th>
+                            <th style="width: 15%">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>

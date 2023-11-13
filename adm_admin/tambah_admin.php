@@ -157,7 +157,7 @@ if (isset($_POST['kirim'])) {
                 echo "<script>alert('ukuran foto max 1MB');window.location='tambah_admin.php';</script>";
             } else {
                 move_uploaded_file($file_tmp, '../assets/img/user/' . $nama_baru);
-                $query = "insert into user values('','$nama', '$email', '$username','$password_hash','$alamat','$no_hp','admin','$nama_baru')";
+                $query = "insert into user (nama, email, username, password, alamat, no_hp, level, gambar_user) values('$nama', '$email', '$username','$password_hash','$alamat','$no_hp','admin','$nama_baru')";
                 $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
                 echo "<script>alert('Data berhasil disimpan');window.location='../admin/adm_admin.php';</script>";
             }

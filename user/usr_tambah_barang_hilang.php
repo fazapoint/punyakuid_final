@@ -159,7 +159,7 @@ if (isset($_POST['kirim'])) {
                 echo "<script>alert('Ukuran foto adalah 1MB');window.location='../user/usr_edit_profil.php';</script>";
             } else {
                 move_uploaded_file($file_tmp, '../assets/img/barang_hilang/' . $nama_baru);
-                $query = "insert into barang_hilang values('','$kategori','$id_user','$kota','1','$nama_bh','$tgl_bh','$lokasi_bh','$penyebab_bh','$nama_baru','')";
+                $query = "insert into barang_hilang (id_ktg_barang, id_user, id_kota, id_status, nama_bh, tgl_bh, lokasi_bh, penyebab_bh, gambar_bh, pesan_bh) values('$kategori','$id_user','$kota','1','$nama_bh','$tgl_bh','$lokasi_bh','$penyebab_bh','$nama_baru','')";
                 $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
                 echo "<script>alert('Data berhasil ditambahkan');window.location='../user/usr_barang_hilang.php';</script>";
             }

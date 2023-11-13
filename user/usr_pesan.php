@@ -55,7 +55,7 @@ if (isset($_POST['kirim'])) {
     if ($perihal_pesan == "" || $isi_pesan == "") {
         echo "<script>alert('Harap isi perihal dan pesan');window.location='../user/usr_pesan.php';</script>";
     } else {
-        $query = "insert into pesan values('','$id_user','$perihal_pesan','$isi_pesan')";
+        $query = "insert into pesan (id_user, perihal_pesan, isi_pesan) values('$id_user','$perihal_pesan','$isi_pesan')";
         $hasil =  mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
         echo "<script>alert('Pesan berhasil dikirim');window.location='../user/usr_pesan.php';</script>";
     }

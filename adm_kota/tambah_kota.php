@@ -54,7 +54,7 @@ include '../template/adm_footer.php';
 
 if (isset($_POST['kirim'])) {
     $kota = $_POST['kota'];
-    $query = "insert into kota values('','$kota')";
+    $query = "insert into kota (nama_kota) values('$kota')";
     $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
 ?>
 

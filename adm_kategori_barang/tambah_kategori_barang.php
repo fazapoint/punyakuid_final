@@ -54,7 +54,7 @@ include '../template/adm_footer.php';
 
 if (isset($_POST['kirim'])) {
     $kategori = $_POST['kategori'];
-    $query = "insert into kategori_barang values('','$kategori')";
+    $query = "insert into kategori_barang (ktg_barang) values('$kategori')";
     $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
 ?>
 

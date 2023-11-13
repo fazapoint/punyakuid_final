@@ -1,6 +1,6 @@
 <?php
 // menghubungkan dengan koneksi
-include 'koneksi.php';
+require 'koneksi.php';
 
 // menangkap data yang dikirim dari form
 
@@ -28,7 +28,7 @@ if ($duplikat_username > 0 and $duplikat_email > 0) {
 } elseif ($password != $repassword) {
     header("location:daftar.php?pesan=password");
 } else {
-    $query = "insert into user values('','$nama', '$email', '$username','$password_hash', '', '','user','user_dummy.png')";
+    $query = "insert into user (nama, email, username, password, alamat, no_hp, level, gambar_user) values('$nama', '$email', '$username','$password_hash', '', '','user','user_dummy.png')";
     $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
     header("location:login.php?pesan=daftar_sukses");
 }
