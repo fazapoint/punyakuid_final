@@ -69,6 +69,9 @@
                                         <hr>
                                     </form>
                                     <div class="text-center">
+                                        <a class="small" href="index.php">Home</a>
+                                    </div>
+                                    <div class="text-center">
                                         <small>belum punya akun ?</small>
                                     </div>
                                     <div class="text-center">

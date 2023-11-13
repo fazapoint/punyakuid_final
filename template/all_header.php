@@ -1,6 +1,14 @@
 <?php
 require 'koneksi.php';
+
+session_start();
+
+
+
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +21,7 @@ require 'koneksi.php';
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
     <title>PunyakuID</title>
-
+    <link rel="icon" href="assets/img/iconn1.png">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
@@ -74,13 +82,24 @@ require 'koneksi.php';
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
 
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="team.html">Team</a>
-                                    <a class="dropdown-item" href="faq.html">FAQ</a>
-                                    <a class="dropdown-item" href="terms.html">Terms</a>
+                                    <a class="dropdown-item" href="team.php">Team</a>
+                                    <a class="dropdown-item" href="faq.php">FAQ</a>
+                                    <a class="dropdown-item" href="term.php">Terms</a>
                                 </div>
                             </li>
-                            <li><a href="Login.php">Login</a></li>
-                            <li><a href="daftar.php">SignUp</a></li>
+                            <?php
+                            if (isset($_SESSION['status'])) {
+                            ?>
+                                <li><a href="<?php echo $_SESSION['level'] ?>/dashboard.php">Profil</a></li>
+                            <?php
+                            } else {
+                            ?>
+                                <li><a href="login.php">Login</a></li>
+                                <li><a href="daftar.php">SignUp</a></li>
+                            <?php
+                            }
+                            ?>
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

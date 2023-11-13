@@ -51,7 +51,7 @@ $data = mysqli_query(
                                 <td><?php echo $d['nama_bh']; ?></td>
                                 <td><?php echo date('d-m-Y', strtotime($d['tgl_bh']));  ?></td>
                                 <td><?php echo $d['ket_status']; ?></td>
-                                <td><a href="" class="btn btn-success">Detail</a>
+                                <td><a href="../detail_barang.php?id_bh=<?php echo $d['id_bh'] ?>" class="btn btn-success">Detail</a>
                                     <a href="../usr_riwayat/hapus_riwayat.php?id_bh= <?php echo $d['id_bh']; ?>"" class=" btn btn-danger">Hapus</a>
                                 </td>
                             </tr>

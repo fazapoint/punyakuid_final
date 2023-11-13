@@ -76,7 +76,7 @@ require '../koneksi.php';
                                                     <a class="btn btn-sm btn-success" href="../adm_barang_hilang/terima_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">TERIMA</a>
                                                     <a class="btn btn-sm btn-warning" href="../adm_barang_hilang/tolak_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">TOLAK</a>
                                                     <a class="btn btn-sm btn-danger" href="../adm_barang_hilang/hapus_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">HAPUS</a>
-                                                    <a class="btn btn-sm btn-primary" href="../adm_barang_hilang/detail_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">DETAIL</a>
+                                                    <a class="btn btn-sm btn-primary" href="../detail_barang.php?id_bh=<?php echo $d['id_bh'] ?>">DETAIL</a>
                                                 </td>
 
                                             </tr>
